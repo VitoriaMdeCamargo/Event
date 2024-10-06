@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Eventos</title>
+</head>
+<body>
+<h1>Lista de Eventos</h1>
+<a href="/events/new">Criar Novo Evento</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Localização</th>
+        <th>Data</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.location}"></td>
+        <td th:text="${event.date}"></td>
+        <td th:text="${event.description}"></td>
+        <td>
+            <a th:href="@{/events/edit/{id}(id=${event.id})}">Editar</a>
+            <a th:href="@{/events/delete/{id}(id=${event.id})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
